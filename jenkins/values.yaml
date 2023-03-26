@@ -17,7 +17,7 @@ controller:
       cpu: "1"
       memory: "3500Mi"
   javaOpts: "-Xms3500m -Xmx3500m"
-  serviceType: ClusterIP
+  serviceType: LoadBalancer
 agent:
   resources:
     requests:
