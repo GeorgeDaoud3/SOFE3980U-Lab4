@@ -46,4 +46,4 @@
 3. Configure Maven Plugin
    select **Dashboard**, **Manage Jenkins**, **Global Tool Configuration**, choose **Add Maven**, name it **maven**, choose **Install automatically**, click **save**.
    ![sq4_5](figures/sq4_5.jpg)
- 
+4. Create a GitHub account. Create a repository. Copy the content of the [repository](https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git) into your repository ( or simply fork it ).
