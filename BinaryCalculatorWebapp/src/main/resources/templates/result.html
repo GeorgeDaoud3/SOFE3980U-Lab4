@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h3>
+	<p th:text="${operand1} + ' '+${operator}+' '+${operand2} + '='+ ${result}" />
+	</h3>
+	<a href="/" >New operation</a>
+	<a th:href="'/?operand1='+${result}" >Continue calculation</a>
+</body>
+</html>

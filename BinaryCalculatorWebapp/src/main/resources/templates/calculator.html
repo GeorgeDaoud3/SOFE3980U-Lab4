@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+        integrity=
+"sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+        integrity=
+"sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <!-- for styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+		input[type="submit"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+  
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+		select {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<!-- create table -->
+  
+<body>
+<form action="/" method="Post">
+    <table id="calcu">
+        <tr>
+            <td colspan="2"><input type="text" id="operand1" name="operand1" th:value="${operand1}" onfocus="focusFun(false)" readonly></td>
+            <td colspan="1"> <select id="operator" name="operator"  >
+			<option value="+">+</option>
+			<option value="*">*</option>
+			<option value="|">|</option>
+			<option value="&">&</option>
+			<option value=" " hidden selected="selected" > </option>
+			</select></td>
+            <td colspan="2"><input type="text" id="operand2" name="operand2" onfocus="focusFun(true)" readonly></td>
+            
+        </tr>
+        <tr>
+            <td colspan="1"><input type="button" value="0" onclick="dis('0')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td colspan="1"><input type="button" value="1" onclick="dis('1')" 
+                        onkeydown="myFunction(event)"> </td>
+			<td colspan="1"><input type="button" value="sddsd" hidden></td>
+			<td colspan="1"><input type="button" value="C" onclick="clr()"></td>
+			<td colspan="1"><input type="button" value="CE" onclick="clrOne()"></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td colspan="1"><input type="button" value="+" onclick="oper('+')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td colspan="1"><input type="button" value="*" onclick="oper('*')" 
+                        onkeydown="myFunction(event)"> </td>
+		</tr>
+		<tr>
+            <td colspan="1"><input type="button" value="|" onclick="oper('|')" 
+                        onkeydown="myFunction(event)"> </td>
+			<td colspan="1"><input type="button" value="&" onclick="oper('&')" 
+                        onkeydown="myFunction(event)"> </td>
+			<td colspan="1"><input type="button" hidden></td>
+            <td><input type="submit" value="=" accesskey="="> </td> 
+        </tr>
+    </table>
+  </form>
+	<script th:inline="javascript">
+		var x = [[${operand1Focused}]];
+	</script>
+    <script>
+        // Function that display value
+		function focusFun(val){
+			x=val;
+		}
+        function dis(val) {
+            if(x) {
+				document.getElementById("operand2").value += val;
+			}
+			else {
+				document.getElementById("operand1").value += val;
+			}
+        }
+		function oper(val)
+		{
+			document.getElementById("operator").value = val;
+			x=true;
+		}
+        function myFunction(event) {
+            if (event.key == '0' || event.key == '1')
+				if(x) {
+					document.getElementById("operand2").value += event.key;
+				}
+				else {
+					document.getElementById("operand1").value += event.key;
+				}
+        }
+  
+        var cal = document.getElementById("calcu");
+        cal.onkeyup = function (event) {
+            if (event.keyCode === 13) {
+                console.log("Enter");
+                let x = document.getElementById("result").value
+                console.log(x);
+                solve();
+            }
+        }
+  
+        // Function that evaluates the digit and return result
+        function solve() {
+            let x = document.getElementById("result").value
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        }
+  
+        // Function that clear the display
+        function clr() {
+            if(x) {
+				if( document.getElementById("operand2").value == "") {
+					x=false;
+					if(document.getElementById("operator").value == ""){
+						document.getElementById("operand1").value = "";
+					}
+					else{
+						document.getElementById("operator").value = "";
+					}
+				}
+				else{
+					document.getElementById("operand2").value = "";
+				}
+			}
+			else {
+				document.getElementById("operand1").value = "";
+			}
+        }
+		function clrOne() {
+            if(x) {
+				str=document.getElementById("operand2").value;
+				str=str.slice(0,-1);
+				document.getElementById("operand2").value=str;
+			}
+			else {
+				str=document.getElementById("operand1").value;
+				str=str.slice(0,-1);
+				document.getElementById("operand1").value=str;
+			}
+        }
+    </script>
+</body>
+  
+</html> 
