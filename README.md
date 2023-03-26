@@ -34,3 +34,4 @@
    kubectl get services
    ```
    8. Access Jenkins server using the following URL http://<jenkinsIP>:8080. Where <jenkinsIP> is the IP obtained in the previous step. It should look like
+      ![sq4_1](figures/sq4_1.jpg)
