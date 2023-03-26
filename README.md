@@ -17,21 +17,24 @@
    helm repo update
    ```
    4. Clone the repository for the Helm values.
-	 ```cmd
-   cd ~
-   git clone https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git
-   ```
+      ```cmd
+      cd ~
+      git clone https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git
+      ```
    5. Use the Helm CLI to deploy the chart **cd-jenkins** with the configuration set from the repository **jenkins/values.yaml** onto Kubernetes with the name **cd-jenkins**.
-   ```cmd
-   helm install cd-jenkins -f ~/SOFE3980U-Lab4/jenkins/values.yaml jenkinsci/jenkins --wait
-   ```
+      ```cmd
+      helm install cd-jenkins -f ~/SOFE3980U-Lab4/jenkins/values.yaml jenkinsci/jenkins --wait
+      ```
    6. **(optional)** to remove the **cd-jenkins** from Kubernetes. **<u>Don’t run it now<\u>**.
-   ```cmd
-   helm uninstall cd-jenkins
-   ```
+      ```cmd
+      helm uninstall cd-jenkins
+      ```
    7. Retrieve Jenkins external IP,
-   ```cmd
-   kubectl get services
-   ```
-   8. Access Jenkins server using the following URL http://<jenkinsIP>:8080. Where <jenkinsIP> is the IP obtained in the previous step. It should look like
+      ```cmd
+      kubectl get services
+      ```
       ![sq4_1](figures/sq4_1.jpg)
+   8. Access Jenkins server using the following URL http://<jenkinsIP>:8080. Where <jenkinsIP> is the IP obtained in the previous step. It should look like
+      ![sq4_2](figures/sq4_2.jpg)
+   9. To fix a connection issue, select **Manage Jenkins**, **configure Global Security**, under **CSRF Protection**, check **Enable proxy compatibility**. Click **save** button. (Note the connection issue won’t be fixed until the configuration is saved. You may need to repeat this step until the configuration is saved)
+      ![sq4_3](figures/sq4_3.jpg)
