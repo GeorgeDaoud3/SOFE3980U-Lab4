@@ -36,5 +36,14 @@
       ![sq4_1](figures/sq4_1.jpg)
    8. Access Jenkins server using the following URL http://<jenkinsIP>:8080. Where <jenkinsIP> is the IP obtained in the previous step. It should look like
       ![sq4_2](figures/sq4_2.jpg)
-   9. To fix a connection issue, select **Manage Jenkins**, **configure Global Security**, under **CSRF Protection**, check **Enable proxy compatibility**. Click **save** button. (Note the connection issue won’t be fixed until the configuration is saved. You may need to repeat this step until the configuration is saved)
+   9. To fix a connection issue, **Manage Jenkins**, select **configure Global Security**, under **CSRF Protection**, and check **Enable proxy compatibility**. Click **save** button. (Note the connection issue won’t be fixed until the configuration is saved. You may need to repeat this step until the configuration is saved)
       ![sq4_3](figures/sq4_3.jpg)
+## Create a Maven project job
+1. Install Maven Plugin 
+   select **Dashboard**, **Manage Jenkins**, **Manage Plugins**, choose **Available Plugins**, search for **Pipeline Maven Integration**, check it, click **Download now and install after restart**, and check **Restart Jenkins when installation is complete and no jobs are running**. Finally, wait until Jenkins restarts
+   ![sq4_4](figures/sq4_4.jpg)
+2. Repeat the previous step to install **Maven Integration** plugin
+3. Configure Maven Plugin
+   select **Dashboard**, **Manage Jenkins**, **Global Tool Configuration**, choose **Add Maven**, name it **maven**, choose **Install automatically**, click **save**.
+   ![sq4_5](figures/sq4_5.jpg)
+ 
