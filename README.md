@@ -39,11 +39,12 @@
    9. To fix a connection issue, **Manage Jenkins**, select **configure Global Security**, under **CSRF Protection**, and check **Enable proxy compatibility**. Click **save** button. (Note the connection issue won’t be fixed until the configuration is saved. You may need to repeat this step until the configuration is saved)
       ![sq4_3](figures/sq4_3.jpg)
 ## Create a Maven project job
-1. Install Maven Plugin 
+1. Create a GitHub account. Create a repository. Copy the content of the [repository](https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git) into your repository ( or simply fork it ).
+2. Install Maven Plugin 
    select **Dashboard**, **Manage Jenkins**, **Manage Plugins**, choose **Available Plugins**, search for **Pipeline Maven Integration**, check it, click **Download now and install after restart**, and check **Restart Jenkins when installation is complete and no jobs are running**. Finally, wait until Jenkins restarts
    ![sq4_4](figures/sq4_4.jpg)
-2. Repeat the previous step to install **Maven Integration** plugin
-3. Configure Maven Plugin
+3. Repeat the previous step to install **Maven Integration** plugin
+4. Configure Maven Plugin
    select **Dashboard**, **Manage Jenkins**, **Global Tool Configuration**, choose **Add Maven**, name it **maven**, choose **Install automatically**, click **save**.
    ![sq4_5](figures/sq4_5.jpg)
-4. Create a GitHub account. Create a repository. Copy the content of the [repository](https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git) into your repository ( or simply fork it ).
+5. 
