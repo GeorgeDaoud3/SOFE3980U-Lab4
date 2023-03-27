@@ -26,7 +26,7 @@ spec:
   containers:
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
-    entrypoint: /bin/sh
+    entrypoint: /builder/google-cloud-sdk/bin/
     //image: google/cloud-sdk:latest
     command:
     - cat
@@ -55,7 +55,7 @@ spec:
       steps {
         container('gcloud') {
 		sh 'find / -name gcloud'
-                sh '/builder/google-cloud-sdk/.install/.backup/bin/gcloud --version'
+                sh 'gcloud --version'
             
         }
       }
