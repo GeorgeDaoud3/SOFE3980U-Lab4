@@ -30,7 +30,7 @@
       helm uninstall cd-jenkins
       ```
    7. Retrieve Jenkins external IP,
-      ```cmd
+      ```cmd 
       kubectl get services
       ```
       ![sq4_1](figures/sq4_1.jpg)
