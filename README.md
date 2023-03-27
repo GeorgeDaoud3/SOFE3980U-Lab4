@@ -57,3 +57,24 @@
    ![sq4_5](figures/sq4_5.jpg)
 8. Create a Job: select **Dashboard**. Click **create a job**. Name it **binaryCalculate_mvn**, and choose **Maven Project**. Finally, click **Ok**.
    ![sq4_6](figures/sq4_6.jpg)
+9.	Configure the job: The job will automatically pull the repository for each commit. Then, the maven project is built and the status is sent back to the repository to be associative to the commit.
+   1. For Source Code Management, select Git. Fill in the Repository URL. Make sure that the branch is blank.
+      ![sq4_11](figures/sq4_11.jpg)
+   2. In build triggers section, check GitHub hook trigger for GITScm polling to automatically start the job for each new commit to the repository.
+      ![sq4_12](figures/sq4_12.jpg)
+   3. In build section, set the path of the pom file in the repository and the build options.
+      ![sq4_13](figures/sq4_13.jpg)
+   4. In the Post-build Actions section, set build status on GitHub commit which will associate the GitHub commit with the status of the Jenkins job.
+      ![sq4_14](figures/sq4_14.jpg)
+   5. Click Save. 
+10. To enable Jenkins to automatically start running after each commit, **webhook** has to be configured in the GitHub repository. 
+   1. Within the repository page in the Github, select settings. Select Webhooks. Then, click Add webhook.
+      ![sq4_15](figures/sq4_15.jpg)
+   2. set the Payload URL to http://\<jenkinsIP\>:8080/github-webhook/ and the content type to JSON. Then, click Add webhook.
+      ![sq4_16](figures/sq4_16.jpg)
+11. Once you commit any changes to the repository (you can change the readme file), the job will start building. 
+   1. To check the status of each run or to build it the job manually, navigate to the job page within Jenkins.
+      ![sq4_17](figures/sq4_17.jpg)
+   2. Also the commit in the GitHub will have a check mark and a link to the Jenkins build report.
+      ![sq4_18](figures/sq4_18.jpg)
+ 
