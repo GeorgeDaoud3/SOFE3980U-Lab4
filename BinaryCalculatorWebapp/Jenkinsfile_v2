@@ -54,7 +54,7 @@ spec:
 	    stage('Build and push image') {
       steps {
         container('gcloud') {
-		sh 'find / -name gcloud'
+		//sh 'find / -name gcloud'
                 sh 'gcloud --version'
             
         }
