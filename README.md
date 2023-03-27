@@ -10,7 +10,7 @@
    2. If there is no Kubernetes cluster within your GCP project, Create a cluster as illustrated in [MS3](https://github.com/GeorgeDaoud3/SOFE3980U-Lab3#setup-google-kubernetes-engine-gke). To get the cluster information.
       ```cmd
       kubectl cluster-info
-      ```
+      ``` 
    3. Pull the Jenkins Helm chart from a repository.  
       ```cmd
       helm repo add jenkinsci https://charts.jenkins.io
