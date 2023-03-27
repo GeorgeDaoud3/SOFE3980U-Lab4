@@ -1,0 +1,42 @@
+pipeline {
+  environment {
+    //PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
+	PROJECT = "green-tract-379622"
+    APP_NAME = "BinaryCalculatorWebapp"
+	//CLUSTER = "REPLACE_WITH_YOUR_CLUSTER_NAME"
+    CLUSTER = "sofe3980u"
+    CLUSTER_ZONE = "northamerica-northeast1-b"
+    IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}"
+    JENKINS_CRED = "${PROJECT}"
+  }
+  
+  agent any
+  tools {
+    maven 'maven' 
+  }
+  stages {
+    stage ('Init') {
+      steps {
+        sh 'echo "Start of Job"'
+        sh 'ls -la'
+      }
+    }
+    stage ('test') {
+      steps {
+        sh 'mvn clean test -f ./BinaryCalculatorWebapp/pom.xml'
+      }
+    }
+    stage ('build') {
+      steps {
+        sh 'mvn package -DskipTests -f ./BinaryCalculatorWebapp/pom.xml'
+      }
+    }
+    stage('Build and push image with Container Builder') {
+      steps {
+        container('gcloud') {
+          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ."
+        }
+      }
+    }
+  }
+}
