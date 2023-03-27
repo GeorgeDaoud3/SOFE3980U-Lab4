@@ -25,7 +25,7 @@ spec:
   serviceAccountName: cd-jenkins
   containers:
   - name: BinaryCalculatorWebapp
-    image: gcr.io/cloud-builders/BinaryCalculatorWebapp
+    image: gcr.io/cloud-builders/binary_calculator
     command:
     - cat
     tty: true
