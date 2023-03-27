@@ -5,7 +5,7 @@
 
 ## Introduction and Getting started
 1. Watch the following video about [Dev-ops](https://www.youtube.com/watch?v=LFDrDnKPOTg).
-2. Install Jenkins Server on GCP, using Helm. Helm is a tool to create a customized applications within Kubernetes.
+2. Install Jenkins Server on GCP, using Helm. Helm is a tool to create customized applications within Kubernetes.
    1. Watch the following video about [Helm](https://www.youtube.com/watch?v=fy8SHvNZGeE).
    2. If there is no Kubernetes cluster within your GCP project, Create a cluster as illustrated in [MS3](https://github.com/GeorgeDaoud3/SOFE3980U-Lab3#setup-google-kubernetes-engine-gke). To get the cluster information.
       ```cmd
@@ -75,5 +75,5 @@
 11. Once you commit any changes to the repository (you can change the readme file), the job will start building. 
    1. To check the status of each run or to build it the job manually, navigate to the job page within Jenkins.
       ![sq4_17](figures/sq4_17.jpg)
-   2. Also the commit in the GitHub will have a check mark and a link to the Jenkins build report.
+   2. Also, the commit in the GitHub will have a check mark and a link to the Jenkins build report.
       ![sq4_18](figures/sq4_18.jpg)
