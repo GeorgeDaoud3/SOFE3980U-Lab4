@@ -23,8 +23,8 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
-  - name: binary-calculator
-    image: gcr.io/cloud-builders/binary-calculator
+  - name: alpine
+    image: eclipse-temurin:17-jdk-alpine
     command:
     - cat
     tty: true
@@ -54,7 +54,7 @@ spec:
     }
     stage('Build and push image with Container Builder') {
       steps {
-        container('binary-calculator') {
+        container('alpine') {
           sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
       }
