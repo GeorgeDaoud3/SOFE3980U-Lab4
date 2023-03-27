@@ -25,8 +25,8 @@ spec:
   serviceAccountName: cd-jenkins
   containers:
   - name: gcloud
-    //image: gcr.io/cloud-builders/gcloud
-    image: google/cloud-sdk:latest
+    image: gcr.io/cloud-builders/gcloud
+    //image: google/cloud-sdk:latest
     command:
     - cat
     tty: true
@@ -53,7 +53,9 @@ spec:
 	    stage('Build and push image') {
       steps {
         container('gcloud') {
-		sh "gcloud compute zones --help"
+		            withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
+                sh '$GCLOUD_PATH/gcloud --version'
+            }
         }
       }
     }
