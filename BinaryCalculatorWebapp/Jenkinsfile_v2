@@ -7,7 +7,7 @@ pipeline {
     CLUSTER = "sofe3980u"
     CLUSTER_ZONE = "northamerica-northeast1-b"
     IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}"
-    JENKINS_CRED = "My Project 65158"
+    JENKINS_CRED = "green-tract-379622"
   }
   
 agent {
