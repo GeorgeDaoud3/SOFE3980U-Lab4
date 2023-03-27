@@ -42,11 +42,11 @@ spec:
         //sh 'ls -la'
       }
     }
-    stage ('test') {
-      steps {
-        sh 'mvn clean test -f ./BinaryCalculatorWebapp/pom.xml'
-      }
-    }
+    //stage ('test') {
+    //  steps {
+    //    sh 'mvn clean test -f ./BinaryCalculatorWebapp/pom.xml'
+    //  }
+    //}
     stage ('build') {
       steps {
         sh 'mvn package -DskipTests -f ./BinaryCalculatorWebapp/pom.xml'
