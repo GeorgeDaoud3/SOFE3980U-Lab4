@@ -77,4 +77,3 @@
       ![sq4_17](figures/sq4_17.jpg)
    2. Also the commit in the GitHub will have a check mark and a link to the Jenkins build report.
       ![sq4_18](figures/sq4_18.jpg)
- 
