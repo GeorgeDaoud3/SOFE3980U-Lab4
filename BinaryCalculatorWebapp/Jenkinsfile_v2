@@ -29,6 +29,11 @@ spec:
     command:
     - cat
     tty: true
+  - name: kubectl
+    image: gcr.io/cloud-builders/kubectl
+    command:
+    - cat
+    tty: true
 """
 }
   }
@@ -40,7 +45,15 @@ spec:
       steps {
 	    checkout scm
         sh 'echo "Start of Job"'
+		
         //sh 'ls -la'
+      }
+    }
+	    stage('Build and push image with Container Builder') {
+      steps {
+        container('gcloud') {
+		sh "gcloud compute zones --help"
+        }
       }
     }
     //stage ('test') {
@@ -56,6 +69,7 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
+		sh "gcloud compute zones --help"
           sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
       }
