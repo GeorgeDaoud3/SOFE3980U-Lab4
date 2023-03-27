@@ -24,8 +24,8 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
-  - name: binary_calculator
-    image: gcr.io/cloud-builders/binary_calculator
+  - name: binary-calculator
+    image: gcr.io/cloud-builders/binary-calculator
     command:
     - cat
     tty: true
@@ -55,7 +55,7 @@ spec:
     }
     stage('Build and push image with Container Builder') {
       steps {
-        container('binary_calculator') {
+        container('binary-calculator') {
           sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
       }
