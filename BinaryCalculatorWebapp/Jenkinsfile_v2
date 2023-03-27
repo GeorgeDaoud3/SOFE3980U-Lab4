@@ -12,7 +12,6 @@ pipeline {
   
 agent {
     kubernetes {
-      label 'BinaryCalculator'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
