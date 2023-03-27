@@ -10,7 +10,12 @@ pipeline {
     JENKINS_CRED = "${PROJECT}"
   }
   
-  agent any
+  agent {
+    kubernetes {
+      label 'BinaryCalculatorWebapp'
+      defaultContainer 'jnlp'
+	  }
+	}
   tools {
     maven 'maven' 
   }
