@@ -10,9 +10,28 @@ pipeline {
     JENKINS_CRED = "My Project 65158"
   }
   
-  agent {
-    kubernetes 
-	}
+agent {
+    kubernetes {
+      label 'BinaryCalculator'
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+labels:
+  component: ci
+spec:
+  # Use service account that can deploy to all namespaces
+  serviceAccountName: cd-jenkins
+  containers:
+  - name: BinaryCalculatorWebapp
+    image: gcr.io/cloud-builders/BinaryCalculatorWebapp
+    command:
+    - cat
+    tty: true
+"""
+}
+  }
   tools {
     maven 'maven' 
   }
