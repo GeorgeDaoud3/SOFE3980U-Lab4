@@ -7,14 +7,11 @@ pipeline {
     CLUSTER = "sofe3980u"
     CLUSTER_ZONE = "northamerica-northeast1-b"
     IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}"
-    JENKINS_CRED = "${PROJECT}"
+    JENKINS_CRED = "My Project 65158"
   }
   
   agent {
-    kubernetes {
-      label 'BinaryCalculatorWebapp'
-      defaultContainer 'jnlp'
-	  }
+    kubernetes 
 	}
   tools {
     maven 'maven' 
@@ -22,8 +19,9 @@ pipeline {
   stages {
     stage ('Init') {
       steps {
+	    checkout scm
         sh 'echo "Start of Job"'
-        sh 'ls -la'
+        //sh 'ls -la'
       }
     }
     stage ('test') {
@@ -39,7 +37,7 @@ pipeline {
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
-          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ."
+          sh "PYTHONUNBUFFERED=1 gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
       }
     }
