@@ -77,3 +77,30 @@
       ![sq4_17](figures/sq4_17.jpg)
    2. Also, the commit in the GitHub will have a check mark and a link to the Jenkins build report.
       ![sq4_18](figures/sq4_18.jpg)
+
+## Create a Jenkins job using a script.
+The Other way is to create a customized job by providing a script (**Jenkinsfile**) that contains the description of a pipeline of stages that would be executed. This method is more flexible. The Jenkinsfile already exists in the repository at the path /BinaryCalculatorWebapp/. 
+1.	Watch this video about [the pipeline syntax]( https://www.youtube.com/watch?v=pzbrVVy6ul4)
+2.	Read the file /BinaryCalculatorWebapp/Jenkinsfile and try to understand 
+3.	Select Dashboard. click New Item. Name it BinaryCalculator_pipeline. Choose the type to be Pipeline.
+4.	On the configuration page,
+   1. In the Build Triggers section, check GitHub hook trigger for GITScm polling.
+   2. In the Pipeline section, 
+      * Set the **Definition** to **Pipeline script from SCM**.
+      * Set the **SCM** to your GitHub link.
+      * Set the **Script Path** to /BinaryCalculatorWebapp/Jenkinsfile
+5.	As the **webhook** is already configured, it should work automatically when  after each commit. Commit any change to the repository. Then, check that the job is been executed and check its report.
+
+## Discussion:
+What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
+
+## Design:
+* Update the Binary Calculator project to the latest version you have implemented. Check that the jobs start running and check their report. 
+* Until now, the script in the Jenkins file contains only the continuous integration part. It’s required to update it to continuously deploy to GKE.
+
+
+## Deliverable
+* A report containing both the discussion and design parts.
+* Your Github link.
+* An audible video of about 3 minutes showing the continuous integration part (the two techniques).
+* An audible video of about 3 minutes showing the design part.
