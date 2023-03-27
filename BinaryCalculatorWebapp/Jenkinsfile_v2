@@ -55,7 +55,7 @@ spec:
       steps {
         container('gcloud') {
 		sh 'find / -name gcloud'
-                sh 'gcloud --version'
+                sh '/builder/google-cloud-sdk/.install/.backup/bin/gcloud --version'
             
         }
       }
