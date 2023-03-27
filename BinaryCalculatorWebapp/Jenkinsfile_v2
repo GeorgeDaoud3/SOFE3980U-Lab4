@@ -26,6 +26,7 @@ spec:
   containers:
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
+	entrypoint: /bin/sh
     //image: google/cloud-sdk:latest
     command:
     - cat
