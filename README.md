@@ -41,9 +41,9 @@
 ## Create a Maven project job
 1. Create a GitHub account. Create a repository. Copy the content of the [repository](https://github.com/GeorgeDaoud3/SOFE3980U-Lab4.git) into your repository ( or simply fork it ).
 2. Create a GitHub token: Within the GitHub page, login into your account. Choose  **settings**, **Developer settings**, **Personal access token**, then, **Token (classic)**. Click **Generate new token**. Select **Generate new token (classic)**. Set the note, check **public_repo** and click **Generate token**. Finally, copy the token code.
-   ![sq4_6](figures/sq4_6.jpg)
-3. Install **Pipeline Maven Integration** Plugin: select **Dashboard**, **Manage Jenkins**, then, **Manage Plugins**. Choose **Available Plugins**. Search for **Pipeline Maven Integration**. After checking it, click **Download now and install after restart**. Check **Restart Jenkins when installation is complete and no jobs are running**. Finally, wait until the plugin is intalled and Jenkins restarts.
    ![sq4_7](figures/sq4_7.jpg)
+3. Install **Pipeline Maven Integration** Plugin: select **Dashboard**, **Manage Jenkins**, then, **Manage Plugins**. Choose **Available Plugins**. Search for **Pipeline Maven Integration**. After checking it, click **Download now and install after restart**. Check **Restart Jenkins when installation is complete and no jobs are running**. Finally, wait until the plugin is intalled and Jenkins restarts.
+   ![sq4_4](figures/sq4_4.jpg)
 4. Repeat the previous step to install **Maven Integration** plugin
 5. Repeat the previous step to install **GitHub** plugin
 6. Configure GitHub Plugin
@@ -54,6 +54,6 @@
    3. Set the **credential** to **GitHub_token**. Test the connection. Then, click **Save**.
       ![sq4_10](figures/sq4_10.jpg)
 7. Configure Maven Plugin: select **Dashboard**, **Manage Jenkins**, **Global Tool Configuration**, choose **Add Maven**, name it **maven**, choose **Install automatically**, click **save**.
-   ![sq4_4](figures/sq4_4.jpg)
-8. Create a Job: select **Dashboard**. Click **create a job**. Name it **binaryCalculate_mvn**, and choose **Maven Project**. Finally, click **Ok**.
    ![sq4_5](figures/sq4_5.jpg)
+8. Create a Job: select **Dashboard**. Click **create a job**. Name it **binaryCalculate_mvn**, and choose **Maven Project**. Finally, click **Ok**.
+   ![sq4_6](figures/sq4_6.jpg)
