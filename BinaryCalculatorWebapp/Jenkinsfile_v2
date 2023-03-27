@@ -46,17 +46,6 @@ spec:
       steps {
 	    checkout scm
         sh 'echo "Start of Job"'
-		
-        //sh 'ls -la'
-      }
-    }
-	    stage('Build and push image') {
-      steps {
-        container('gcloud') {
-		//sh 'find / -name gcloud'
-                sh '/builder/google-cloud-sdk/bin/gcloud --version'
-            
-        }
       }
     }
     //stage ('test') {
@@ -72,7 +61,6 @@ spec:
     stage('Build and push image with Container Builder') {
       steps {
         container('gcloud') {
-		sh "gcloud compute zones --help"
           sh "PYTHONUNBUFFERED=1 /builder/google-cloud-sdk/bin/gcloud builds submit -t ${IMAGE_TAG} ./BinaryCalculatorWebapp/"
         }
       }
