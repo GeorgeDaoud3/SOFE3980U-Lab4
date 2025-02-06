@@ -134,11 +134,11 @@
 The Other way is to create a customized job by providing a script (**Jenkinsfile**) that describes the Job as a pipeline of stages that would be executed. This method is more flexible. The Jenkinsfile already exists in the repository at the path /BinaryCalculatorWebapp/. 
 1.	Watch this video about [the pipeline syntax]( https://www.youtube.com/watch?v=pzbrVVy6ul4)
 2.	Read the file [/BinaryCalculatorWebapp/Jenkinsfile](/BinaryCalculatorWebapp/Jenkinsfile) 
-    * It defines a pipelines of tasks
-    * The first stage in the pipeline is called, **Init**. This will print a welcome string and list the current directory that contains the cloned repository.
+    * It defines a pipeline of tasks
+    * The first stage in the pipeline is called **Init**. This will print a welcome string and list the current directory that contains the cloned repository.
     * The second stage, **test**, runs the test cases for the project defined at the path **./BinaryCalculatorWebapp/**.
     * The third stage, **build**, builds the project defined at the path **./BinaryCalculatorWebapp/**.
-    * The last stage, **Deploy**, is a dummy stage that only display a string
+    * The last stage, **Deploy**, is a dummy stage that only displays a string
 3.	Go to Jenkins' **Dashboard**. Click **New Item**. Name it **BinaryCalculator_pipeline**. Choose the type to be **Pipeline**.
 4.	In the configuration page,
    1. In the **Triggers** section, check **GitHub hook trigger for GITScm polling**.
