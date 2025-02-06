@@ -120,7 +120,10 @@ As Jenkins is running in GKE, we will use a tunnel created with Jenkins to conne
 We will start by creating a service account that gives a permission for deal with the **Artifact Registry** and **GKE** from any device. A JSON key will generated and download to your computer to allow you to use the service account
 1. In the console of GCP, run
     ``` cmd
+    cd ~
+    
     gcloud iam service-accounts create jenkins-sa
+
     gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
         --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
         --role "roles/cloudbuild.builds.builder"
@@ -136,7 +139,30 @@ We will start by creating a service account that gives a permission for deal wit
     gcloud iam service-accounts keys create service_account.json  \
         --iam-account=jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com  
     ```
-2. 
+    These commands will create a service account, grant it three roles, and generate a JSON key file in the home directory.
+2.  Download the **service_account.json** file from the home directory of the GCP console to your computer.
+3.  Print the GCP project name, copy and save it.
+    ``` cmd
+    echo $GOOGLE_CLOUD_PROJECT
+    ```
+4. Navigate to the **Artifact Registry**, copy the full path of the reposaitory created before, and save it.
+5.  Navigate to the **Clusters** in **Kubernetes Engine**, copy the cluster Name and location, and save them.
+
+### 3. Save the Important Information in Jenkins
+The information obtained in the previous subsection will be saved in Jenkins as secret text and files for security reasons. 
+1. In the Jenkins user interface, select **Manage Jenkins**.
+2. Click **Credentials**.
+3. Click **System**.
+4. Click **Global credentials (unrestricted)**.
+5. Click **Add credentials**.
+6. In the **Kind** field, select **Secret file**, upload the Service account JSon file, set the **ID** field to **serive_account**, and click **Create**.
+7. Add another credential with the Kind **Secret Text**. Set the **ID** field to **project_id** and the **Secret** field to the GCP project ID obtained in the previous subsection.
+8. Add another credential with the Kind **Secret Text**. Set the **ID** field to **repo_path** and the **Secret** field to the full path of the reposatory obtained in the previous subsection.
+9. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_name** and the **Secret** field to the GKE cluster name btained in the previous subsection.
+10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location btained in the previous subsection.
+
+### 4. Create Jenkins Job
+
 ## Discussion:
 What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
 
