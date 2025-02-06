@@ -97,6 +97,25 @@ The Other way is to create a customized job by providing a script (**Jenkinsfile
       * Set the **branches to build** to \* / \*
 5.	As the **webhook** is already configured, it should work automatically when  after each commit. Commit any change to the repository. Then, check that the job is been executed and check its report.
 
+## Continous Integration / Continous Deployment using Jenkins
+A continuous deployment will be added to the previous Jenkins Job. 
+### Create a tunnel to GKE
+As Jenkins is running in GKE, we will use a tunnel created with Jenkins to connect to GKE and use Docker containers as Jenkins nodes (worker).
+1. In the Jenkins user interface, select **Manage Jenkins**.
+2. Click **Clouds**.
+3. Click **New cloud**.
+4. Type any name under **Cloud name** and then select **Kubernetes** for Type.
+5. Click **Create**.
+6. In the **Jenkins URL** field, enter the following value:
+    ''' txt
+    http://cd-jenkins:8080
+    '''
+7. In the **Jenkins tunnel** field, enter the following value:
+    ''' txt
+    cd-jenkins-agent:50000
+    '''
+8. Click **Save**.
+9. 
 ## Discussion:
 What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
 
