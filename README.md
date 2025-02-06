@@ -86,7 +86,7 @@
 The Other way is to create a customized job by providing a script (**Jenkinsfile**) that contains the description of a pipeline of stages that would be executed. This method is more flexible. The Jenkinsfile already exists in the repository at the path /BinaryCalculatorWebapp/. 
 1.	Watch this video about [the pipeline syntax]( https://www.youtube.com/watch?v=pzbrVVy6ul4)
 2.	Read the file /BinaryCalculatorWebapp/Jenkinsfile and try to understand 
-3.	Select Dashboard. click New Item. Name it BinaryCalculator_pipeline. Choose the type to be Pipeline.
+3.	Select Dashboard. Click New Item. Name it BinaryCalculator_pipeline. Choose the type to be Pipeline.
 4.	On the configuration page,
    1. In the Build Triggers section, check GitHub hook trigger for GITScm polling.
    2. In the Pipeline section, 
@@ -155,15 +155,15 @@ The information obtained in the previous subsection will be saved in Jenkins as 
 3. Click **System**.
 4. Click **Global credentials (unrestricted)**.
 5. Click **Add credentials**.
-6. In the **Kind** field, select **Secret file**, upload the Service account JSon file, set the **ID** field to **serive_account**, and click **Create**.
+6. In the **Kind** field, select **Secret file**, upload the Service account JSON file, set the **ID** field to **serive_account**, and click **Create**.
 7. Add another credential with the Kind **Secret Text**. Set the **ID** field to **project_id** and the **Secret** field to the GCP project ID obtained in the previous subsection.
 8. Add another credential with the Kind **Secret Text**. Set the **ID** field to **repo_path** and the **Secret** field to the full path of the repository obtained in the previous subsection.
-9. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_name** and the **Secret** field to the GKE cluster name btained in the previous subsection.
-10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location btained in the previous subsection.
+9. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_name** and the **Secret** field to the GKE cluster name obtained in the previous subsection.
+10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location obtained in the previous subsection.
 
 ### 4. Create Jenkins Job
 1. Read the file /BinaryCalculatorWebapp/Jenkinsfile_v2 and try to understand
-2. Select Dashboard. click New Item. Name it BinaryCalculator_cicd. Choose the type to be Pipeline.
+2. Select Dashboard. Click New Item. Name it BinaryCalculator_cicd. Choose the type to be Pipeline.
 3. On the configuration page,
     1. In the Build Triggers section, check GitHub hook trigger for GITScm polling.
     2. In the Pipeline section,
@@ -172,14 +172,13 @@ The information obtained in the previous subsection will be saved in Jenkins as 
         * Set the Repository URL to your GitHub link.
         * Set the Script Path to /BinaryCalculatorWebapp/Jenkinsfile_v2
         * Set the branches to build to * / *
-As the webhook is already configured, it should work automatically when after each commit. Commit any change to the repository. Then, check that the job is been executed and check its report.'
+As the webhook is already configured, it should work automatically when after each commit. Commit any change to the repository. Then, check that the job is been executed and check its report.
 
 ## Discussion:
 What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
 
 ## Design:
 * Update the Binary Calculator project to the latest version you have implemented. Check that the jobs start running and check their report. 
-* Until now, the script in the Jenkins file contains only the continuous integration part. It’s required to update it to continuously deploy to GKE.
 
 
 ## Deliverable
