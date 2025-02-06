@@ -162,7 +162,7 @@ The information obtained in the previous subsection will be saved in Jenkins as 
 10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location obtained in the previous subsection.
 
 ### 4. Create Jenkins Job
-1. Read the file /BinaryCalculatorWebapp/Jenkinsfile_v2 and try to understand
+1. Read the file [/BinaryCalculatorWebapp/Jenkinsfile_v2](/BinaryCalculatorWebapp/Jenkinsfile_v2) and try to understand
 2. Select Dashboard. Click New Item. Name it BinaryCalculator_cicd. Choose the type to be Pipeline.
 3. On the configuration page,
     1. In the Build Triggers section, check GitHub hook trigger for GITScm polling.
