@@ -107,13 +107,13 @@ As Jenkins is running in GKE, we will use a tunnel created with Jenkins to conne
 4. Type any name under **Cloud name** and then select **Kubernetes** for Type.
 5. Click **Create**.
 6. In the **Jenkins URL** field, enter the following value:
-    ''' txt
+    ``` txt
     http://cd-jenkins:8080
-    '''
+    ```
 7. In the **Jenkins tunnel** field, enter the following value:
-    ''' txt
+    ``` txt
     cd-jenkins-agent:50000
-    '''
+    ```
 8. Click **Save**.
 9. 
 ## Discussion:
