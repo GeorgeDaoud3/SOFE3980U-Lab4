@@ -133,7 +133,12 @@
 ## Create a Jenkins job using a script.
 The Other way is to create a customized job by providing a script (**Jenkinsfile**) that describes the Job as a pipeline of stages that would be executed. This method is more flexible. The Jenkinsfile already exists in the repository at the path /BinaryCalculatorWebapp/. 
 1.	Watch this video about [the pipeline syntax]( https://www.youtube.com/watch?v=pzbrVVy6ul4)
-2.	Read the file [/BinaryCalculatorWebapp/Jenkinsfile](/BinaryCalculatorWebapp/Jenkinsfile) and try to understand its function.
+2.	Read the file [/BinaryCalculatorWebapp/Jenkinsfile](/BinaryCalculatorWebapp/Jenkinsfile) 
+   * It defines a pipelines of tasks
+   * The first stage in the pipeline is called, **Init**. This will print a welcome string and list the current directory that contains the cloned repository.
+   * The second stage, **test**, runs the test cases for the project defined at the path **./BinaryCalculatorWebapp/**.
+   * The third stage, **build**, builds the project defined at the path **./BinaryCalculatorWebapp/**.
+   * The last stage, **Deploy**, is a dummy stage that only display a string
 3.	Go to Jenkins' **Dashboard**. Click **New Item**. Name it **BinaryCalculator_pipeline**. Choose the type to be **Pipeline**.
 4.	In the configuration page,
    1. In the **Triggers** section, check **GitHub hook trigger for GITScm polling**.
@@ -213,7 +218,14 @@ The information obtained in the previous subsection will be saved in Jenkins as 
 10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location obtained in the previous subsection.
 
 ### 4. Create Jenkins Job 
-1. Read the file [/BinaryCalculatorWebapp/Jenkinsfile_v2](/BinaryCalculatorWebapp/Jenkinsfile_v2) and try to understand
+1. Read the file [/BinaryCalculatorWebapp/Jenkinsfile_v2](/BinaryCalculatorWebapp/Jenkinsfile_v2)
+   * It reads the secret files and text and set them as environment variables.
+   * It create an agent as a Kuberenetes pod that creates a container ,namely **gcloud**, from the image **google/cloud-sdk:latest**. It includes a Google Cloud SDK with the gcloud CLI.
+   * The first stage, **test**, runs the test cases for the project defined at the path **./BinaryCalculatorWebapp/**.
+   * The second stage, **build**, builds the project defined at the path **./BinaryCalculatorWebapp/**.
+   * The third stage, **containerize**, init the gcloud to be connected to the GCP project using the service account. Then, It builds and pushes the docker image of the **BinaryCalculatorWebapp** project to the Artifact Registry repository. 
+   * The fourth stage, **deployment**, init the gcloud then delete any previous deployment if found and recreate the deployment.
+   * The last stage, **service**, init the gcloud then creates a load balancing service to the deployment if not exist. Finally, the Ip provided to the service will be displayed if the service is running.  
 2. Select **Dashboard**. Click **New Item**. Name it **BinaryCalculator_cicd**. Choose the type to be **Pipeline**.
 3. On the configuration page,
     1. In the Build Triggers section, check **GitHub hook trigger for GITScm polling**.
