@@ -162,6 +162,17 @@ The information obtained in the previous subsection will be saved in Jenkins as 
 10. Add another credential with the Kind **Secret Text**. Set the **ID** field to **cluster_zone** and the **Secret** field to the GKE cluster location btained in the previous subsection.
 
 ### 4. Create Jenkins Job
+1. Read the file /BinaryCalculatorWebapp/Jenkinsfile_v2 and try to understand
+2. Select Dashboard. click New Item. Name it BinaryCalculator_cicd. Choose the type to be Pipeline.
+3. On the configuration page,
+    1. In the Build Triggers section, check GitHub hook trigger for GITScm polling.
+    2. In the Pipeline section,
+        * Set the Definition to Pipeline script from SCM.
+        * Set the SCM to Git
+        * Set the Repository URL to your GitHub link.
+        * Set the Script Path to /BinaryCalculatorWebapp/Jenkinsfile_v2
+        * Set the branches to build to * / *
+As the webhook is already configured, it should work automatically when after each commit. Commit any change to the repository. Then, check that the job is been executed and check its report.'
 
 ## Discussion:
 What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
