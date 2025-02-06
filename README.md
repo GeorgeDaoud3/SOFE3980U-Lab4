@@ -99,7 +99,7 @@ The Other way is to create a customized job by providing a script (**Jenkinsfile
 
 ## Continous Integration / Continous Deployment using Jenkins
 A continuous deployment will be added to the previous Jenkins Job. 
-### Create a tunnel to GKE
+### 1. Create a tunnel to GKE
 As Jenkins is running in GKE, we will use a tunnel created with Jenkins to connect to GKE and use Docker containers as Jenkins nodes (worker).
 1. In the Jenkins user interface, select **Manage Jenkins**.
 2. Click **Clouds**.
@@ -115,7 +115,28 @@ As Jenkins is running in GKE, we will use a tunnel created with Jenkins to conne
     cd-jenkins-agent:50000
     ```
 8. Click **Save**.
-9. 
+
+### 2. Create a Service Account and Record needs information from GCP
+We will start by creating a service account that gives a permission for deal with the **Artifact Registry** and **GKE** from any device. A JSON key will generated and download to your computer to allow you to use the service account
+1. In the console of GCP, run
+    ``` cmd
+    gcloud iam service-accounts create jenkins-sa
+    gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+        --role "roles/cloudbuild.builds.builder"
+   	
+    gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+        --role "roles/container.clusterAdmin"
+   	
+    gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+        --role "roles/container.admin"
+   	
+    gcloud iam service-accounts keys create service_account.json  \
+        --iam-account=jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com  
+    ```
+2. 
 ## Discussion:
 What do pipeline, node, agent, stage, and steps mean in the context of Jenkins?
 
