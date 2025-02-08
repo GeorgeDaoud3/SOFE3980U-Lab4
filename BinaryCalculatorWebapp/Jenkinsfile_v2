@@ -49,15 +49,7 @@ pipeline {
                         // set the credential for gcloud within the container
                         sh 'gcloud auth activate-service-account --key-file $SERVICE_ACCOUNT'
                         sh 'gcloud config set project $PROJECT'
-                        
-						script {
-                            try {
-                                // docker build + push
-                                sh 'gcloud builds submit -t $IMAGE_TAG --suppress-logs'
-                            }
-                            catch (Exception e) {
-                            }
-                        }
+                        sh 'gcloud builds submit -t $IMAGE_TAG --suppress-logs'
                     }
                 }
             }
