@@ -195,6 +195,10 @@ We will start by creating a service account. It permits dealing with the **Artif
     gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
         --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
         --role "roles/iam.serviceAccountUser"
+
+    gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
+        --member "serviceAccount:jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com" \
+        --role "roles/viewer"
    	
     gcloud iam service-accounts keys create service_account.json  \
         --iam-account=jenkins-sa@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com  
