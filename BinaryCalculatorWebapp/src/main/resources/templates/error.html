@@ -1,13 +1,66 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Invalid Operator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- for styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+		input[type="submit"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+  
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+		select {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
 	<h3>
-	<p th:text="'Invalid operator: ( '+${operator}+' )'" />
-	</h3>
-	
+	<form action="/" method="Post">
+		<table id="calcu">
+			<tr>
+				<td span="2"><input type="text" th:value="'Invalid operator: ( '+${operator}+' )'"  readonly /></td>
+			</tr>
+			<tr>
+				<td ><a href="/" > <input type="button" value="New Calculation" /></a></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

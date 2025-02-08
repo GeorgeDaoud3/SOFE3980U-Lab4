@@ -1,14 +1,67 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Showing the Results</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- for styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+		input[type="submit"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+  
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+		select {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
 	<h3>
-	<p th:text="${operand1} + ' '+${operator}+' '+${operand2} + '='+ ${result}" />
-	</h3>
-	<a href="/" >New operation</a>
-	<a th:href="'/?operand1='+${result}" >Continue calculation</a>
+	<form action="/" method="Post">
+		<table id="calcu">
+			<tr>
+				<td span="2"><input type="text" th:value="${operand1} + ' '+${operator}+' '+${operand2} + '='+ ${result}"  readonly /></td>
+			</tr>
+			<tr>
+				<td ><a href="/" > <input type="button" value="New Calculation" /></a></td>
+				<td ><a th:href="'/?operand1='+${result}" > <input type="button" value="Continue Calculation" /></a></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
